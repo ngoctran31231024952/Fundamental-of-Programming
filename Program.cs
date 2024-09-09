@@ -2,62 +2,63 @@
 {
     private static void Main(string[] args)
     {
-        int Thua = 0;
-        int Thang = 0;
-        int Choi = 0;
-        int SoTienConLai;
-        do
+        int x = 5, y = 1, z = 10;
+        int m = max(x, y, z);
+        m = max(1);
+        Console.WriteLine(m);
+        m = max(1, 2);
+        Console.WriteLine(m);
+        Console.Write("Enter number you want to calculate the factorial:");
+        int userInput = Convert.ToInt32(Console.ReadLine());
+        long f = factorial_recursion(userInput);
+        Console.WriteLine($"{userInput}!={f}");
+    }
+    static int max(int a, params int[]args) //Bai 1
+    {
+        if (args.Length == 0)
+            return a;
+        int m = args[0];
+        foreach (int i in args) // i la gia tri cua phan tu trong mang.
         {
-            Random rnd = new Random();
-            int comp_num = rnd.Next(1, 100);
-            for (int i = 0; i < 5; i++)
-            {
-                Console.Write("Your number:");
-                int man_num = int.Parse("0" + Console.ReadLine());
-                if (man_num == comp_num)
-                {
-                    Console.WriteLine("Bravo! You are genious");
-                    Console.WriteLine("You win!");
-                    Thang = Thang + 1;
-                    break;
-                }
-                else
-                if (i == 4)
-                {
-                    if (man_num < comp_num)
-                    {
-                        Console.WriteLine("Your guessing number is less than computer number");
-                        Console.WriteLine("You lose!");
-                        Thua = Thua + 1;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Your guessing number is greater than computer number");
-                        Console.WriteLine("You lose!");
-                        Thua = Thua + 1;
-                    }
-                }
-                else
-                if (man_num < comp_num)
-                    Console.WriteLine("Your guessing number is less than computer number");
-                else
-                    Console.WriteLine("Your guessing number is greater than computer number");
-            }
-            Console.WriteLine("Do you want to continue? <Y/N>");
-            String res = "" + Console.ReadLine();
-            if (res.ToUpper().Equals("N"))
-            {
-                Console.WriteLine("Bye! See you again");
-                Choi = Choi + 1;
-                break;
-            }
-            else
-                Choi= Choi + 1;
+            if (i > m)
+                m = i;
         }
-        while (true);
-        Console.WriteLine($"So lan da choi:{Choi}");
-        Console.WriteLine($"So tien con lai: {1000 - Choi * 50}");
-        Console.WriteLine($"So lan thang/thua: {Thang}/{Thua}");
+        return Math.Max(a,m);
+    }
+    static long factorial (int n) //Bai 4
+    {
+        long f = 1;
+        for (int i = 1; i <= n; i++)
+            f *= i;
+        return f;
+    }
+    static long factorial_recursion(int n) //Bai 4
+    {
+        if (n == 0) return 1;
+        return n * factorial_recursion(n - 1);
+    }
+    static bool checkprime (int n) //Bai 5
+    {
+        for (int i=2; i<=n; i++)
+        {
+            if(n%i==0)
+                return false;
+            return true;
+        }
+    }
+    static void printPrimeNumberUnderN(int n) //Bai 6
+    {
+        for (int i=1; i<=n; i++)
+        {
+            if (checkprime(i) == true)
+                if
+                else
+                            Console.WriteLine($"Prime numbers under {n} is {i}");
+        }
+    }
+    static void printFirstNprimeNumber(int n) //Bai 6
+    {
 
     }
+
 }
